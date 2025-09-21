@@ -1,27 +1,28 @@
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background -->
-  <rect width="32" height="32" rx="4" fill="#f8fafc"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="30" fill="#1e40af" stroke="#1e3a8a" stroke-width="2"/>
   
-  <!-- Wave/Landform base -->
-  <path d="M4 20c0-2 2-4 4-4s4 2 4 4v2c0 2-2 4-4 4s-4-2-4-4v-2z" fill="#e2e8f0"/>
+  <!-- House -->
+  <path d="M20 45 L32 35 L44 45 L44 25 L20 25 Z" fill="#fbbf24" stroke="#f59e0b" stroke-width="1"/>
   
-  <!-- Main wave/landform -->
-  <path d="M6 18c0-3 3-6 6-6s6 3 6 6v4c0 3-3 6-6 6s-6-3-6-6v-4z" fill="#cbd5e1"/>
+  <!-- Roof -->
+  <path d="M18 25 L32 15 L46 25 L44 25 Z" fill="#dc2626" stroke="#b91c1c" stroke-width="1"/>
   
-  <!-- Palm tree (left side) -->
-  <path d="M10 12v6h1v-6h-1z" fill="#475569"/>
-  <path d="M9 12l1-2 1 2-1 1-1-1z" fill="#475569"/>
-  <path d="M8 11l2-1 1 1-2 1-1-1z" fill="#475569"/>
-  <path d="M11 11l1-1 1 1-1 1-1-1z" fill="#475569"/>
+  <!-- Door -->
+  <rect x="28" y="35" width="8" height="10" fill="#92400e" stroke="#78350f" stroke-width="1"/>
   
-  <!-- House (right side) -->
-  <path d="M18 16h4v4h-4v-4z" fill="#94a3b8"/>
-  <path d="M16 16l3-2 3 2v2h-6v-2z" fill="#64748b"/>
-  <path d="M19 17h2v2h-2v-2z" fill="white"/>
-  <path d="M19 17h1v1h-1v-1z" fill="#cbd5e1"/>
-  <path d="M20 17h1v1h-1v-1z" fill="#cbd5e1"/>
+  <!-- Windows -->
+  <rect x="22" y="28" width="4" height="4" fill="#0ea5e9" stroke="#0284c7" stroke-width="0.5"/>
+  <rect x="38" y="28" width="4" height="4" fill="#0ea5e9" stroke="#0284c7" stroke-width="0.5"/>
   
-  <!-- Sun (background) -->
-  <circle cx="22" cy="14" r="3" fill="#fbbf24"/>
-  <path d="M22 11l0.5 1 1 0.5-1 0.5-0.5 1-0.5-1-1-0.5 1-0.5 0.5-1z" fill="#f59e0b"/>
+  <!-- Palm tree -->
+  <path d="M50 45 L50 35 L48 35 L48 45 L46 45 L46 35 L48 35 L50 35 Z" fill="#16a34a" stroke="#15803d" stroke-width="1"/>
+  <path d="M48 35 Q45 32 48 29 Q51 32 48 35" fill="#16a34a" stroke="#15803d" stroke-width="1"/>
+  <path d="M48 35 Q45 30 48 27 Q51 30 48 35" fill="#16a34a" stroke="#15803d" stroke-width="1"/>
+  <path d="M48 35 Q51 32 48 29 Q45 32 48 35" fill="#16a34a" stroke="#15803d" stroke-width="1"/>
+  <path d="M48 35 Q51 30 48 27 Q45 30 48 35" fill="#16a34a" stroke="#15803d" stroke-width="1"/>
+  
+  <!-- Sun -->
+  <circle cx="52" cy="12" r="6" fill="#fbbf24" stroke="#f59e0b" stroke-width="1"/>
+  <path d="M52 4 L52 8 M52 16 L52 20 M46 6 L48 10 M58 6 L56 10 M46 18 L48 14 M58 18 L56 14" stroke="#fbbf24" stroke-width="2" stroke-linecap="round"/>
 </svg>

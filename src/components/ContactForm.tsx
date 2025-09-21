@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Send, Calendar, Users, Home, Phone, Mail, MessageSquare, CheckCircle, AlertCircle } from './Icons';
-import { useTranslation } from '../hooks/useTranslation';
+import { Send, Calendar, CheckCircle, AlertCircle } from './Icons';
+// import { useTranslation } from '../hooks/useTranslation'; // TODO: Use for future translations
 import { initEmailJS, sendContactEmail, sendAutoReply } from '../config/emailjs';
 
 interface ContactFormData {
@@ -20,7 +20,7 @@ interface ContactFormProps {
 }
 
 export const ContactForm: React.FC<ContactFormProps> = ({ language }) => {
-  const { t } = useTranslation(language);
+  // const { t } = useTranslation(language); // TODO: Use for future translations
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',

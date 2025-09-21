@@ -1,78 +1,98 @@
-<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
   <!-- Background gradient -->
   <defs>
     <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#e2e8f0;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#0ea5e9;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1e40af;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e3a8a;stop-opacity:1" />
     </linearGradient>
-    <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#cbd5e1;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#94a3b8;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#64748b;stop-opacity:1" />
+    <linearGradient id="houseGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:1" />
     </linearGradient>
   </defs>
   
   <!-- Background -->
   <rect width="1200" height="630" fill="url(#bgGradient)"/>
   
-  <!-- Main logo graphic (centered) -->
-  <g transform="translate(600, 200)">
-    <!-- Wave/Landform base -->
-    <ellipse cx="0" cy="80" rx="200" ry="60" fill="#e2e8f0"/>
+  <!-- Decorative elements -->
+  <circle cx="100" cy="100" r="50" fill="#fbbf24" opacity="0.3"/>
+  <circle cx="1100" cy="530" r="80" fill="#fbbf24" opacity="0.2"/>
+  <circle cx="200" cy="500" r="30" fill="#fbbf24" opacity="0.4"/>
+  
+  <!-- Main house -->
+  <g transform="translate(150, 200)">
+    <!-- House base -->
+    <path d="M0 200 L100 150 L200 200 L200 300 L0 300 Z" fill="url(#houseGradient)" stroke="#f59e0b" stroke-width="3"/>
     
-    <!-- Main wave/landform -->
-    <path d="M-180 60c0-60 60-120 120-120s120 60 120 120v80c0 60-60 120-120 120s-120-60-120-120v-80z" fill="url(#waveGradient)"/>
+    <!-- Roof -->
+    <path d="M-20 200 L100 140 L220 200 L200 200 L100 150 L0 200 Z" fill="#dc2626" stroke="#b91c1c" stroke-width="3"/>
     
-    <!-- Palm tree (left side) -->
-    <g transform="translate(-120, 0)">
-      <!-- Palm trunk -->
-      <rect x="-8" y="40" width="16" height="80" fill="#475569"/>
-      <!-- Palm leaves -->
-      <path d="M-8 40l8-30 8 30-8 10-8-10z" fill="#475569"/>
-      <path d="M-6 35l6-25 6 25-6 8-6-8z" fill="#475569"/>
-      <path d="M-4 30l4-20 4 20-4 6-4-6z" fill="#475569"/>
-      <path d="M-2 25l2-15 2 15-2 4-2-4z" fill="#475569"/>
-    </g>
+    <!-- Door -->
+    <rect x="85" y="250" width="30" height="50" fill="#92400e" stroke="#78350f" stroke-width="2"/>
     
-    <!-- House (right side) -->
-    <g transform="translate(80, 20)">
-      <!-- House body -->
-      <rect x="-30" y="60" width="60" height="60" fill="#94a3b8"/>
-      <!-- House roof -->
-      <path d="M-40 60l30-20 30 20v10h-60v-10z" fill="#64748b"/>
-      <!-- House window -->
-      <rect x="-15" y="75" width="30" height="30" fill="white"/>
-      <line x1="-15" y1="90" x2="15" y2="90" stroke="#cbd5e1" stroke-width="2"/>
-      <line x1="0" y1="75" x2="0" y2="105" stroke="#cbd5e1" stroke-width="2"/>
-    </g>
+    <!-- Windows -->
+    <rect x="30" y="220" width="25" height="25" fill="#0ea5e9" stroke="#0284c7" stroke-width="2"/>
+    <rect x="145" y="220" width="25" height="25" fill="#0ea5e9" stroke="#0284c7" stroke-width="2"/>
     
-    <!-- Sun (background) -->
-    <circle cx="100" cy="-20" r="40" fill="#fbbf24"/>
-    <circle cx="100" cy="-20" r="30" fill="#f59e0b"/>
-    <!-- Sun rays -->
-    <g stroke="#fbbf24" stroke-width="4" stroke-linecap="round">
-      <line x1="100" y1="-70" x2="100" y2="-50"/>
-      <line x1="130" y1="-40" x2="120" y2="-30"/>
-      <line x1="140" y1="-10" x2="130" y2="-10"/>
-      <line x1="130" y1="20" x2="120" y2="10"/>
-      <line x1="100" y1="30" x2="100" y2="10"/>
-      <line x1="70" y1="20" x2="80" y2="10"/>
-      <line x1="60" y1="-10" x2="70" y2="-10"/>
-      <line x1="70" y1="-40" x2="80" y2="-30"/>
-    </g>
+    <!-- Window frames -->
+    <line x1="42.5" y1="220" x2="42.5" y2="245" stroke="#0284c7" stroke-width="1"/>
+    <line x1="30" y1="232.5" x2="55" y2="232.5" stroke="#0284c7" stroke-width="1"/>
+    <line x1="157.5" y1="220" x2="157.5" y2="245" stroke="#0284c7" stroke-width="1"/>
+    <line x1="145" y1="232.5" x2="170" y2="232.5" stroke="#0284c7" stroke-width="1"/>
   </g>
   
-  <!-- Brand text -->
-  <g transform="translate(600, 450)">
-    <!-- REISEZIEL KROATIEN -->
-    <text x="0" y="0" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="48" font-weight="bold" letter-spacing="2px">
-      REISEZIEL KROATIEN
-    </text>
-    <!-- Separator line -->
-    <line x1="-200" y1="10" x2="200" y2="10" stroke="#cbd5e1" stroke-width="2"/>
-    <!-- FERIENHÄUSER & APPARTEMENTS -->
-    <text x="0" y="40" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="24" font-weight="normal" letter-spacing="1px">
-      FERIENHÄUSER & APPARTEMENTS
-    </text>
+  <!-- Palm trees -->
+  <g transform="translate(300, 150)">
+    <!-- Palm trunk -->
+    <rect x="0" y="0" width="20" height="200" fill="#16a34a" stroke="#15803d" stroke-width="2"/>
+    
+    <!-- Palm leaves -->
+    <path d="M10 0 Q-30 20 10 40 Q50 20 10 0" fill="#16a34a" stroke="#15803d" stroke-width="2"/>
+    <path d="M10 0 Q-20 30 10 50 Q40 30 10 0" fill="#16a34a" stroke="#15803d" stroke-width="2"/>
+    <path d="M10 0 Q-40 10 10 30 Q60 10 10 0" fill="#16a34a" stroke="#15803d" stroke-width="2"/>
+    <path d="M10 0 Q-10 40 10 60 Q30 40 10 0" fill="#16a34a" stroke="#15803d" stroke-width="2"/>
   </g>
+  
+  <!-- Second palm tree -->
+  <g transform="translate(450, 180)">
+    <rect x="0" y="0" width="15" height="150" fill="#16a34a" stroke="#15803d" stroke-width="2"/>
+    <path d="M7.5 0 Q-25 15 7.5 30 Q40 15 7.5 0" fill="#16a34a" stroke="#15803d" stroke-width="2"/>
+    <path d="M7.5 0 Q-15 25 7.5 40 Q30 25 7.5 0" fill="#16a34a" stroke="#15803d" stroke-width="2"/>
+    <path d="M7.5 0 Q-30 5 7.5 20 Q45 5 7.5 0" fill="#16a34a" stroke="#15803d" stroke-width="2"/>
+  </g>
+  
+  <!-- Sun -->
+  <g transform="translate(900, 80)">
+    <circle cx="0" cy="0" r="40" fill="#fbbf24" stroke="#f59e0b" stroke-width="4"/>
+    <path d="M0 -60 L0 -50 M0 50 L0 60 M-60 0 L-50 0 M50 0 L60 0 M-42 -42 L-35 -35 M35 -35 L42 -42 M-42 42 L-35 35 M35 35 L42 42" stroke="#fbbf24" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Main title -->
+  <text x="600" y="200" font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="white" text-anchor="middle">
+    REISEZIEL KROATIEN
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="600" y="250" font-family="Arial, sans-serif" font-size="36" font-weight="normal" fill="#fbbf24" text-anchor="middle">
+    FERIENHÄUSER & APPARTEMENTS
+  </text>
+  
+  <!-- Location -->
+  <text x="600" y="300" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="white" text-anchor="middle" opacity="0.9">
+    Bilice • Šibenik • Kroatien
+  </text>
+  
+  <!-- Decorative line -->
+  <line x1="400" y1="350" x2="800" y2="350" stroke="#fbbf24" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Features -->
+  <text x="600" y="400" font-family="Arial, sans-serif" font-size="24" font-weight="normal" fill="white" text-anchor="middle" opacity="0.8">
+    ✨ Luxuriöse Ferienwohnungen • Schwimmbad • 🌊 Adriatisches Meer
+  </text>
+  
+  <!-- Website -->
+  <text x="600" y="450" font-family="Arial, sans-serif" font-size="20" font-weight="normal" fill="#fbbf24" text-anchor="middle">
+    www.reiseziel-kroatien.de
+  </text>
 </svg>

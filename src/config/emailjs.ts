@@ -1,10 +1,10 @@
 // EmailJS configuration for contact form
 export const EMAILJS_CONFIG = {
   // Public key for EmailJS service
-  PUBLIC_KEY: 'YOUR_EMAILJS_PUBLIC_KEY', // Replace with your actual EmailJS public key
+  PUBLIC_KEY: 'demo_public_key', // Replace with your actual EmailJS public key
   
   // Service ID from EmailJS
-  SERVICE_ID: 'service_reiseziel', // Replace with your EmailJS service ID
+  SERVICE_ID: 'service_demo', // Replace with your EmailJS service ID
   
   // Template IDs for different email types
   TEMPLATES: {
@@ -28,8 +28,29 @@ export const initEmailJS = async () => {
 };
 
 // Send contact form email
-export const sendContactEmail = async (formData: any) => {
+export const sendContactEmail = async (formData: Record<string, string>) => {
   try {
+    // Check if EmailJS is configured
+    if (EMAILJS_CONFIG.PUBLIC_KEY === 'demo_public_key' || EMAILJS_CONFIG.SERVICE_ID === 'service_demo') {
+      console.log('🚀 DEMO MODE: EmailJS not configured yet');
+      console.log('📧 Email would be sent with data:', {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+        property: formData.property,
+        checkIn: formData.checkIn,
+        checkOut: formData.checkOut,
+        guests: formData.guests,
+        language: formData.language
+      });
+      
+      // Simulate successful send for demo
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      console.log('✅ DEMO: Email sent successfully to info@reiseziel-kroatien.com');
+      return { success: true, message: 'Email sent successfully (Demo Mode)' };
+    }
+
     const emailjs = await import('@emailjs/browser');
     
     const templateParams = {
