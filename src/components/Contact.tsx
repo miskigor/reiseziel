@@ -1,5 +1,6 @@
 import React from 'react';
 import { Phone, Mail, MapPin, Clock } from './Icons';
+import { ContactForm } from './ContactForm';
 import { useTranslation } from '../hooks/useTranslation';
 
 interface ContactProps {
@@ -57,6 +58,11 @@ export const Contact: React.FC<ContactProps> = ({ language }) => {
             {t('contact.subtitle')}
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-emerald-400 to-sky-400 mx-auto mt-8 rounded-full"></div>
+        </div>
+
+        {/* Contact Form */}
+        <div className="container mx-auto px-4 mb-16">
+          <ContactForm language={language} />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
