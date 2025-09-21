@@ -34,11 +34,7 @@ export const Contact: React.FC<ContactProps> = ({ language }) => {
     }
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Ovdje možete dodati logiku za slanje forme
-    alert(language === 'hr' ? 'Poruka je poslana!' : language === 'en' ? 'Message sent!' : 'Nachricht gesendet!');
-  };
+  // TODO: Implement contact form submission
 
   return (
     <section id="contact" className="py-20 bg-gradient-to-b from-sky-50 via-white to-rose-50 relative overflow-hidden">
