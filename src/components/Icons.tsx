@@ -40,11 +40,12 @@ export {
   ConciergeBell as Concierge,
   Sparkles,
   
-  // Form icons
-  Send,
-  Calendar,
-  Home,
-  MessageSquare,
-  CheckCircle,
-  AlertCircle,
+      // Form icons
+      Send,
+      Calendar,
+      Home,
+      MessageSquare,
+      CheckCircle,
+      AlertCircle,
+      Copy,
 } from 'lucide-react';

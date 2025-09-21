@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Send, Calendar, CheckCircle, AlertCircle } from './Icons';
+import { Send, Calendar, CheckCircle, AlertCircle, Copy, Mail } from './Icons';
 // import { useTranslation } from '../hooks/useTranslation'; // TODO: Use for future translations
 import { initEmailJS, sendContactEmail, sendAutoReply } from '../config/emailjs';
+import { sendEmailDirectly, copyEmailData } from '../config/email-alternative';
 
 interface ContactFormData {
   name: string;
@@ -37,6 +38,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ language }) => {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errors, setErrors] = useState<Partial<ContactFormData>>({});
   const [step, setStep] = useState(1);
+  const [showEmailOptions, setShowEmailOptions] = useState(false);
 
   // Initialize EmailJS on component mount
   useEffect(() => {
@@ -98,12 +100,16 @@ export const ContactForm: React.FC<ContactFormProps> = ({ language }) => {
     setSubmitStatus('idle');
 
     try {
+      // Try EmailJS first
       const result = await sendContactEmail(formData);
       
-      if (result.success) {
+      if (result.success && result.message.includes('Demo Mode')) {
+        // Demo mode - show alternative options
+        setShowEmailOptions(true);
         setSubmitStatus('success');
-        
-        // Send auto-reply to customer
+      } else if (result.success) {
+        // Real EmailJS working
+        setSubmitStatus('success');
         await sendAutoReply(formData.email, language);
         
         // Reset form after successful submission
@@ -121,6 +127,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ language }) => {
           });
           setStep(1);
           setSubmitStatus('idle');
+          setShowEmailOptions(false);
         }, 3000);
       } else {
         setSubmitStatus('error');
@@ -130,6 +137,22 @@ export const ContactForm: React.FC<ContactFormProps> = ({ language }) => {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  const handleEmailDirectly = () => {
+    const success = sendEmailDirectly(formData);
+    if (success) {
+      setSubmitStatus('success');
+      setShowEmailOptions(false);
+    }
+  };
+
+  const handleCopyToClipboard = async () => {
+    const success = await copyEmailData(formData);
+    if (success) {
+      setSubmitStatus('success');
+      setShowEmailOptions(false);
     }
   };
 
@@ -410,13 +433,59 @@ export const ContactForm: React.FC<ContactFormProps> = ({ language }) => {
         </form>
 
         {/* Status messages */}
-        {submitStatus === 'success' && (
+        {submitStatus === 'success' && !showEmailOptions && (
           <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center space-x-2">
             <CheckCircle className="w-5 h-5 text-green-600" />
             <p className="text-green-800">
               {language === 'hr' ? 'Poruka je uspješno poslana! Kontaktirat ćemo vas uskoro.' : 
                language === 'de' ? 'Nachricht erfolgreich gesendet! Wir werden Sie bald kontaktieren.' : 
                'Message sent successfully! We will contact you soon.'}
+            </p>
+          </div>
+        )}
+
+        {/* Email options for demo mode */}
+        {showEmailOptions && (
+          <div className="mt-6 p-6 bg-blue-50 border border-blue-200 rounded-lg">
+            <div className="flex items-center space-x-2 mb-4">
+              <Mail className="w-5 h-5 text-blue-600" />
+              <h4 className="text-lg font-semibold text-blue-800">
+                {language === 'hr' ? 'Odaberite način slanja:' : 
+                 language === 'de' ? 'Wählen Sie die Versandmethode:' : 
+                 'Choose sending method:'}
+              </h4>
+            </div>
+            
+            <div className="space-y-3">
+              <button
+                onClick={handleEmailDirectly}
+                className="w-full flex items-center justify-center space-x-2 bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-300"
+              >
+                <Mail className="w-5 h-5" />
+                <span>
+                  {language === 'hr' ? 'Otvorite email klijent' : 
+                   language === 'de' ? 'E-Mail-Client öffnen' : 
+                   'Open email client'}
+                </span>
+              </button>
+              
+              <button
+                onClick={handleCopyToClipboard}
+                className="w-full flex items-center justify-center space-x-2 bg-gray-600 text-white py-3 px-4 rounded-lg hover:bg-gray-700 transition-colors duration-300"
+              >
+                <Copy className="w-5 h-5" />
+                <span>
+                  {language === 'hr' ? 'Kopiraj podatke' : 
+                   language === 'de' ? 'Daten kopieren' : 
+                   'Copy data to clipboard'}
+                </span>
+              </button>
+            </div>
+            
+            <p className="text-sm text-blue-700 mt-3">
+              {language === 'hr' ? 'EmailJS nije konfiguriran. Koristite alternativne načine slanja.' : 
+               language === 'de' ? 'EmailJS ist nicht konfiguriert. Verwenden Sie alternative Versandmethoden.' : 
+               'EmailJS not configured. Use alternative sending methods.'}
             </p>
           </div>
         )}
