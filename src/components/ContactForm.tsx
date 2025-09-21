@@ -53,6 +53,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ language }) => {
   const validateForm = (): boolean => {
     const newErrors: Partial<ContactFormData> = {};
 
+    // Validate all required fields
     if (!formData.name.trim()) {
       newErrors.name = language === 'hr' ? 'Ime je obavezno' : 
                      language === 'de' ? 'Name ist erforderlich' : 
@@ -73,6 +74,25 @@ export const ContactForm: React.FC<ContactFormProps> = ({ language }) => {
       newErrors.message = language === 'hr' ? 'Poruka je obavezna' : 
                          language === 'de' ? 'Nachricht ist erforderlich' : 
                          'Message is required';
+    }
+
+    // Optional but recommended fields
+    if (!formData.property.trim()) {
+      newErrors.property = language === 'hr' ? 'Preporučeno odabrati apartman' : 
+                          language === 'de' ? 'Empfohlen, Ferienwohnung auszuwählen' : 
+                          'Recommended to select property';
+    }
+
+    if (!formData.checkIn.trim()) {
+      newErrors.checkIn = language === 'hr' ? 'Preporučeno odabrati datum dolaska' : 
+                         language === 'de' ? 'Empfohlen, Ankunftsdatum auszuwählen' : 
+                         'Recommended to select check-in date';
+    }
+
+    if (!formData.checkOut.trim()) {
+      newErrors.checkOut = language === 'hr' ? 'Preporučeno odabrati datum odlaska' : 
+                          language === 'de' ? 'Empfohlen, Abfahrtsdatum auszuwählen' : 
+                          'Recommended to select check-out date';
     }
 
     setErrors(newErrors);
@@ -157,8 +177,31 @@ export const ContactForm: React.FC<ContactFormProps> = ({ language }) => {
   };
 
   const nextStep = () => {
-    if (step === 1 && formData.name && formData.email) {
-      setStep(2);
+    if (step === 1) {
+      // Validate step 1 fields
+      const step1Errors: Partial<ContactFormData> = {};
+      
+      if (!formData.name.trim()) {
+        step1Errors.name = language === 'hr' ? 'Ime je obavezno' : 
+                           language === 'de' ? 'Name ist erforderlich' : 
+                           'Name is required';
+      }
+      
+      if (!formData.email.trim()) {
+        step1Errors.email = language === 'hr' ? 'Email je obavezan' : 
+                            language === 'de' ? 'E-Mail ist erforderlich' : 
+                            'Email is required';
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+        step1Errors.email = language === 'hr' ? 'Email nije valjan' : 
+                            language === 'de' ? 'E-Mail ist ungültig' : 
+                            'Email is not valid';
+      }
+      
+      setErrors(step1Errors);
+      
+      if (Object.keys(step1Errors).length === 0) {
+        setStep(2);
+      }
     }
   };
 
@@ -209,6 +252,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ language }) => {
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
+                    required
                     className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
                       errors.name ? 'border-red-500' : 'border-gray-300'
                     }`}
@@ -230,6 +274,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ language }) => {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
+                    required
                     className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
                       errors.email ? 'border-red-500' : 'border-gray-300'
                     }`}
@@ -325,7 +370,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({ language }) => {
                     name="property"
                     value={formData.property}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                      errors.property ? 'border-red-500' : 'border-gray-300'
+                    }`}
                   >
                     <option value="">
                       {language === 'hr' ? 'Odaberite apartman' : 
@@ -348,6 +395,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ language }) => {
                        'Penthouse 2'}
                     </option>
                   </select>
+                  {errors.property && <p className="text-red-500 text-sm mt-1">{errors.property}</p>}
                 </div>
 
                 <div>
@@ -361,8 +409,11 @@ export const ContactForm: React.FC<ContactFormProps> = ({ language }) => {
                     name="checkIn"
                     value={formData.checkIn}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                      errors.checkIn ? 'border-red-500' : 'border-gray-300'
+                    }`}
                   />
+                  {errors.checkIn && <p className="text-red-500 text-sm mt-1">{errors.checkIn}</p>}
                 </div>
 
                 <div>
@@ -376,8 +427,11 @@ export const ContactForm: React.FC<ContactFormProps> = ({ language }) => {
                     name="checkOut"
                     value={formData.checkOut}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                      errors.checkOut ? 'border-red-500' : 'border-gray-300'
+                    }`}
                   />
+                  {errors.checkOut && <p className="text-red-500 text-sm mt-1">{errors.checkOut}</p>}
                 </div>
               </div>
 
@@ -392,6 +446,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ language }) => {
                   value={formData.message}
                   onChange={handleInputChange}
                   rows={4}
+                  required
                   className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
                     errors.message ? 'border-red-500' : 'border-gray-300'
                   }`}
