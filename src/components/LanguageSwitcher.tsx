@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown } from './Icons';
 import { Language } from '../types';
 
 interface LanguageSwitcherProps {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, X, Instagram, Facebook } from 'lucide-react';
+import { Menu, X, Instagram, Facebook } from './Icons';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { Language } from '../types';
 import { useTranslation } from '../hooks/useTranslation';

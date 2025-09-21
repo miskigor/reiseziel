@@ -1,5 +1,5 @@
 import React from 'react';
-import { Star } from 'lucide-react';
+import { Star } from './Icons';
 import { useTranslation } from '../hooks/useTranslation';
 
 interface ExcursionsProps {

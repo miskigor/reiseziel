@@ -1,5 +1,5 @@
 import React from 'react';
-import { Star, Users, Bed, Bath, MapPin, Wifi, Car, Waves } from 'lucide-react';
+import { Star, Users, Bed, Bath, MapPin, Wifi, Car, Waves } from './Icons';
 import { Apartment } from '../types';
 import { useTranslation } from '../hooks/useTranslation';
 

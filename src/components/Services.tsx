@@ -1,5 +1,5 @@
 import React from 'react';
-import { ConciergeBell as Concierge, Plane, Sparkles, Map } from 'lucide-react';
+import { Concierge, Plane, Sparkles, Map } from './Icons';
 import { useTranslation } from '../hooks/useTranslation';
 
 interface ServicesProps {

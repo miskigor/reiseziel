@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock } from './Icons';
 import { useTranslation } from '../hooks/useTranslation';
 
 interface ContactProps {

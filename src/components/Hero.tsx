@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin } from 'lucide-react';
+import { MapPin } from './Icons';
 import { useTranslation } from '../hooks/useTranslation';
 
 interface HeroProps {

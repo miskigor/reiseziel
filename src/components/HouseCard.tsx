@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Star, Users, Bed, Bath, MapPin, Wifi, Car, Trees, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Star, Users, Bed, Bath, MapPin, Wifi, Car, Trees, ChevronLeft, ChevronRight } from './Icons';
 import { House } from '../types';
 import { useTranslation } from '../hooks/useTranslation';
 

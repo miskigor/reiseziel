@@ -1,5 +1,5 @@
 import React from 'react';
-import { Clock, Star } from 'lucide-react';
+import { Clock, Star } from './Icons';
 import { useTranslation } from '../hooks/useTranslation';
 
 interface LastMinuteProps {
