@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://miskigor.github.io/reiseziel/sitemap.xml
+
+# Allow all search engines to index
+Allow: /favicon.svg
+Allow: /favicon-*.png
+Allow: /logo-social.svg
+Allow: /logo-social.jpg
+
+# Block access to sensitive files
+Disallow: /src/
+Disallow: /*.json
+Disallow: /node_modules/
+
+# Crawl delay (optional)
+Crawl-delay: 1
