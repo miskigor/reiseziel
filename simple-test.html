@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Test - Reiseziel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .test-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+        }
+        .form-group {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            font-size: 16px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .status {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏖️ REISEZIEL KROATIEN</h1>
+        <p>Test stranica za provjeru email forme</p>
+        
+        <div class="test-form">
+            <h2>📧 Kontakt Forma</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Ime i prezime:</label>
+                    <input type="text" id="name" name="name" required placeholder="Unesite vaše ime">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email adresa:</label>
+                    <input type="email" id="email" name="email" required placeholder="vas@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="property">Apartman:</label>
+                    <select id="property" name="property" required>
+                        <option value="">Odaberite apartman</option>
+                        <option value="AP1">AP1 - Luxurious</option>
+                        <option value="AP2">AP2 - Modern</option>
+                        <option value="AP3">AP3 - Cozy</option>
+                        <option value="AP4">AP4 - Family</option>
+                        <option value="AP5">AP5 - Premium</option>
+                        <option value="AP6">AP6 - Deluxe</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="checkin">Datum dolaska:</label>
+                    <input type="date" id="checkin" name="checkin" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="checkout">Datum odlaska:</label>
+                    <input type="date" id="checkout" name="checkout" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="guests">Broj gostiju:</label>
+                    <input type="number" id="guests" name="guests" min="1" max="10" required placeholder="1-10">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Poruka:</label>
+                    <textarea id="message" name="message" rows="4" required placeholder="Opišite vaše potrebe..."></textarea>
+                </div>
+                
+                <button type="submit">📤 Pošalji zahtjev</button>
+            </form>
+            
+            <div id="status" class="status" style="display: none;"></div>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            const statusDiv = document.getElementById('status');
+            statusDiv.style.display = 'block';
+            statusDiv.innerHTML = `
+                <h3>✅ Forma je uspješno poslana!</h3>
+                <p><strong>Ime:</strong> ${data.name}</p>
+                <p><strong>Email:</strong> ${data.email}</p>
+                <p><strong>Apartman:</strong> ${data.property}</p>
+                <p><strong>Datumi:</strong> ${data.checkin} - ${data.checkout}</p>
+                <p><strong>Gosti:</strong> ${data.guests}</p>
+                <p><strong>Poruka:</strong> ${data.message}</p>
+                <hr>
+                <p><strong>Email link:</strong> <a href="mailto:info@reiseziel.hr?subject=Rezervacija ${data.property}&body=Ime: ${data.name}%0AEmail: ${data.email}%0AApartman: ${data.property}%0ADatumi: ${data.checkin} - ${data.checkout}%0AGosti: ${data.guests}%0A%0APoruka: ${data.message}" style="color: #4CAF50;">Otvorite email client</a></p>
+            `;
+            
+            // Scroll to status
+            statusDiv.scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // Set minimum date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('checkin').setAttribute('min', today);
+        document.getElementById('checkout').setAttribute('min', today);
+        
+        // Update checkout minimum when checkin changes
+        document.getElementById('checkin').addEventListener('change', function() {
+            document.getElementById('checkout').setAttribute('min', this.value);
+        });
+    </script>
+</body>
+</html>
