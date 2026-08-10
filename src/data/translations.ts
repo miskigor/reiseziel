@@ -6,7 +6,7 @@ export const translations: Record<string, Translation> = {
       home: 'Početna',
       houses: 'Kuće',
       excursions: 'Izleti',
-      retreat: 'Retreat',
+      lastminute: 'Last Minute',
       about: 'O nama',
       contact: 'Kontakt'
     },
@@ -44,20 +44,6 @@ export const translations: Record<string, Translation> = {
         title: 'Organizirajte nezaboravno djevojačko veče kod nas!',
         content1: 'Tražite savršeno mjesto za proslavu djevojačke večeri? Na pravom ste mjestu! Naša lokacija nudi idealan spoj opuštanja, zabave i elegancije – sve što vam treba za večer koju ćete pamtiti zauvijek.',
         content2: 'Privatni bazen samo za vas Uživajte u intimnoj atmosferi uz osvježavajući bazen, savršen za opušteno druženje, koktele i sjajne fotke za uspomenu! Savršeno mjesto za slavlje Naš prostor možete prilagoditi svom stilu – bilo da želite tematsku zabavu, mirnu večeru pod svijećama ili ludi provod s muzikom do kasno u noć. Mogućnost keteringa i dekoracije U suradnji s provjerenim partnerima nudimo vam opciju organizacije hrane, pića i dekoracije – vi se samo pojavite i uživajte! Idealno za fotkanje Svaki kutak našeg prostora osmišljen je da izgleda sjajno na slikama – jer znamo koliko uspomene znače!'
-      }
-    },
-    retreat: {
-      title: 'Pilates Retreat',
-      subtitle: 'u Hrvatskoj',
-      dates: '19. – 26.09.2026.',
-      description: 'Tjedan pokreta, opuštanja i novih prijateljstava u ekskluzivnoj vili s bazenom na obali Prokljanskog jezera. Pilates direktno uz more, outdoor treninzi na otvorenom i mala, osobna grupa.',
-      tagline: 'Pokret. Opuštanje. Ti.',
-      highlights: {
-        pilates: 'Pilates direktno uz more',
-        outdoor: 'Outdoor treninzi na otvorenom',
-        villa: 'Ekskluzivna vila s bazenom',
-        group: 'Mala, osobna grupa',
-        relax: 'Vrijeme za opuštanje, sunce i nova prijateljstva'
       }
     },
     about: {
@@ -103,7 +89,7 @@ export const translations: Record<string, Translation> = {
       home: 'Home',
       houses: 'Houses',
       excursions: 'Excursions',
-      retreat: 'Retreat',
+      lastminute: 'Last Minute',
       about: 'About',
       contact: 'Contact'
     },
@@ -141,20 +127,6 @@ export const translations: Record<string, Translation> = {
         title: 'Organize an unforgettable bachelorette party with us!',
         content1: 'Looking for the perfect place to celebrate your bachelorette party? You\'re in the right place! Our location offers the ideal combination of relaxation, fun, and elegance – everything you need for an evening you\'ll remember forever.',
         content2: 'Private pool just for you Enjoy an intimate atmosphere by the refreshing pool, perfect for relaxed socializing, cocktails, and great photos for memories! Perfect place for celebration You can customize our space to your style – whether you want a themed party, quiet dinner under candlelight, or wild fun with music until late at night. Catering and decoration options In collaboration with trusted partners, we offer you the option of organizing food, drinks, and decoration – you just show up and enjoy! Perfect for photos Every corner of our space is designed to look great in pictures – because we know how much memories mean!'
-      }
-    },
-    retreat: {
-      title: 'Pilates Retreat',
-      subtitle: 'in Croatia',
-      dates: '19 – 26 Sep 2026',
-      description: 'A week of movement, relaxation and new friendships in an exclusive villa with a pool on the shore of Lake Prokljan. Pilates right by the sea, outdoor training under the open sky, and a small personal group.',
-      tagline: 'Movement. Relaxation. You.',
-      highlights: {
-        pilates: 'Pilates right by the sea',
-        outdoor: 'Outdoor training under the open sky',
-        villa: 'Exclusive villa with pool',
-        group: 'Small, personal group',
-        relax: 'Time to relax, enjoy the sun & make new friends'
       }
     },
     about: {
@@ -200,7 +172,7 @@ export const translations: Record<string, Translation> = {
       home: 'Startseite',
       houses: 'Häuser',
       excursions: 'Ausflüge',
-      retreat: 'Retreat',
+      lastminute: 'Last Minute',
       about: 'Über uns',
       contact: 'Kontakt'
     },
@@ -238,20 +210,6 @@ export const translations: Record<string, Translation> = {
         title: 'Organisiere einen unvergesslichen Junggesellinnenabschied bei uns!',
         content1: 'Du suchst die perfekte Location für deinen Junggesellinnenabschied? Dann bist du bei uns genau richtig! Unsere Location bietet die perfekte Mischung aus Entspannung, Spaß und Stil – alles, was du für einen unvergesslichen Abend brauchst.',
         content2: 'Privater Pool nur für euch Genießt eine entspannte Atmosphäre am Pool – ideal zum Chillen, für Cocktails und tolle Fotos! Der perfekte Ort zum Feiern Gestalte deine Party ganz nach deinem Geschmack – ob Mottoparty, stilvolles Dinner oder ausgelassene Nacht mit Musik und Tanz. Catering- und Dekorationsservice verfügbar Auf Wunsch kümmern wir uns um Essen, Getränke und Deko – ihr müsst nur noch feiern! Instagram-taugliche Kulisse Jede Ecke unserer Location ist ein Hingucker – für Fotos, die euch ewig an diesen besonderen Abend erinnern.'
-      }
-    },
-    retreat: {
-      title: 'Pilates-Retreat',
-      subtitle: 'in Kroatien',
-      dates: '19. – 26.09.2026',
-      description: 'Eine Woche voller Bewegung, Entspannung und neuer Freundschaften in einer exklusiven Villa mit Pool am Prokljan-See. Pilates direkt am Meer, Outdoor-Trainings unter freiem Himmel und eine kleine, persönliche Gruppe.',
-      tagline: 'Bewegung. Entspannung. Du.',
-      highlights: {
-        pilates: 'Pilates direkt am Meer',
-        outdoor: 'Outdoor-Trainings unter freiem Himmel',
-        villa: 'Exklusive Villa mit Pool',
-        group: 'Kleine, persönliche Gruppe',
-        relax: 'Zeit zum Entspannen, Sonne genießen & neue Freundschaften'
       }
     },
     about: {

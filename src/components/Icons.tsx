@@ -48,5 +48,4 @@ export {
       CheckCircle,
       AlertCircle,
       Copy,
-  Heart,
 } from 'lucide-react';
