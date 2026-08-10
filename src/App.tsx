@@ -8,7 +8,7 @@ import { useLanguage } from './hooks/useLanguage';
 // Lazy load non-critical components
 const FeaturedHouses = lazy(() => import('./components/FeaturedHouses').then(m => ({ default: m.FeaturedHouses })));
 const Excursions = lazy(() => import('./components/Excursions').then(m => ({ default: m.Excursions })));
-const LastMinute = lazy(() => import('./components/LastMinute').then(m => ({ default: m.LastMinute })));
+const Retreat = lazy(() => import('./components/Retreat').then(m => ({ default: m.Retreat })));
 const About = lazy(() => import('./components/About').then(m => ({ default: m.About })));
 const Contact = lazy(() => import('./components/Contact').then(m => ({ default: m.Contact })));
 
@@ -68,8 +68,8 @@ function App() {
         <Suspense fallback={<div className="py-20 bg-gray-50"><div className="container mx-auto px-4 text-center"><div className="animate-pulse h-8 bg-gray-300 rounded w-1/3 mx-auto"></div></div></div>}>
           <Excursions language={currentLanguage.code} />
         </Suspense>
-        <Suspense fallback={<div className="py-20 bg-gradient-to-b from-sky-50 via-white to-rose-50"><div className="container mx-auto px-4 text-center"><div className="animate-pulse h-8 bg-gray-300 rounded w-1/3 mx-auto"></div></div></div>}>
-          <LastMinute language={currentLanguage.code} />
+        <Suspense fallback={<div className="py-20 bg-gradient-to-b from-sky-50 via-white to-amber-50"><div className="container mx-auto px-4 text-center"><div className="animate-pulse h-8 bg-gray-300 rounded w-1/3 mx-auto"></div></div></div>}>
+          <Retreat language={currentLanguage.code} />
         </Suspense>
         <Suspense fallback={<div className="py-20 bg-gradient-to-b from-rose-50 via-white to-sky-50"><div className="container mx-auto px-4 text-center"><div className="animate-pulse h-8 bg-gray-300 rounded w-1/3 mx-auto"></div></div></div>}>
           <About language={currentLanguage.code} />
