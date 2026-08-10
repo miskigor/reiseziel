@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { ErrorBoundary } from './components/ErrorBoundary';
@@ -12,12 +12,70 @@ const Retreat = lazy(() => import('./components/Retreat').then(m => ({ default: 
 const About = lazy(() => import('./components/About').then(m => ({ default: m.About })));
 const Contact = lazy(() => import('./components/Contact').then(m => ({ default: m.Contact })));
 
+function scrollToRetreat() {
+  const el = document.getElementById('retreat');
+  if (!el) return false;
+  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  return true;
+}
+
 function App() {
   const { currentLanguage, languages, changeLanguage } = useLanguage();
+  const [isRetreatPage, setIsRetreatPage] = React.useState(() => {
+    if (typeof window === 'undefined') return false;
+    return (
+      window.location.pathname.replace(/\/$/, '') === '/retreat' ||
+      window.location.hash === '#retreat'
+    );
+  });
+
+  useEffect(() => {
+    const path = window.location.pathname.replace(/\/$/, '');
+    const wantsRetreat = path === '/retreat' || window.location.hash === '#retreat';
+    setIsRetreatPage(wantsRetreat);
+    if (!wantsRetreat) return;
+
+    let tries = 0;
+    const timer = window.setInterval(() => {
+      tries += 1;
+      if (scrollToRetreat() || tries > 50) {
+        window.clearInterval(timer);
+      }
+    }, 100);
+
+    return () => window.clearInterval(timer);
+  }, []);
 
   // Generate SEO content based on current language
   const getSEOContent = () => {
-    const baseUrl = "https://miskigor.github.io/reiseziel";
+    const baseUrl = "https://reiseziel-kroatien.de";
+    const retreatUrl = `${baseUrl}/retreat`;
+
+    if (isRetreatPage) {
+      switch (currentLanguage.code) {
+        case 'hr':
+          return {
+            title: "Pilates Retreat Hrvatska | 19.–26.09.2026 | Reiseziel",
+            description: "Poklonite si tjedan pun pokreta, opuštanja i nevjerojatnih pogleda na more. Pilates Retreat 19.–26.09.2026.",
+            keywords: "Pilates Retreat Hrvatska, Bilice, joga, villa pool",
+            url: retreatUrl
+          };
+        case 'de':
+          return {
+            title: "Pilates-Retreat Kroatien | 19.–26.09.2026 | Reiseziel",
+            description: "Gönnen Sie sich eine Woche voller Bewegung, Entspannung und traumhafter Ausblicke auf das Meer. 19.–26.09.2026.",
+            keywords: "Pilates-Retreat Kroatien, Bilice, Villa Pool, Outdoor Workout",
+            url: retreatUrl
+          };
+        default:
+          return {
+            title: "Pilates Retreat Croatia | 19–26 Sep 2026 | Reiseziel",
+            description: "Treat yourself to a week of movement, relaxation and dreamy sea views. Pilates Retreat 19–26 Sep 2026.",
+            keywords: "Pilates Retreat Croatia, Bilice, villa pool",
+            url: retreatUrl
+          };
+      }
+    }
     
     switch (currentLanguage.code) {
       case 'hr':
@@ -61,19 +119,27 @@ function App() {
           languages={languages}
           onLanguageChange={changeLanguage}
         />
-        <Hero language={currentLanguage.code} />
-        <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div></div>}>
-          <FeaturedHouses language={currentLanguage.code} />
-        </Suspense>
-        <Suspense fallback={<div className="py-20 bg-gray-50"><div className="container mx-auto px-4 text-center"><div className="animate-pulse h-8 bg-gray-300 rounded w-1/3 mx-auto"></div></div></div>}>
-          <Excursions language={currentLanguage.code} />
-        </Suspense>
+        {!isRetreatPage && (
+          <>
+            <Hero language={currentLanguage.code} />
+            <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div></div>}>
+              <FeaturedHouses language={currentLanguage.code} />
+            </Suspense>
+            <Suspense fallback={<div className="py-20 bg-gray-50"><div className="container mx-auto px-4 text-center"><div className="animate-pulse h-8 bg-gray-300 rounded w-1/3 mx-auto"></div></div></div>}>
+              <Excursions language={currentLanguage.code} />
+            </Suspense>
+          </>
+        )}
         <Suspense fallback={<div className="py-20 bg-gradient-to-b from-sky-50 via-white to-amber-50"><div className="container mx-auto px-4 text-center"><div className="animate-pulse h-8 bg-gray-300 rounded w-1/3 mx-auto"></div></div></div>}>
-          <Retreat language={currentLanguage.code} />
+          <div className={isRetreatPage ? 'pt-24' : undefined}>
+            <Retreat language={currentLanguage.code} />
+          </div>
         </Suspense>
-        <Suspense fallback={<div className="py-20 bg-gradient-to-b from-rose-50 via-white to-sky-50"><div className="container mx-auto px-4 text-center"><div className="animate-pulse h-8 bg-gray-300 rounded w-1/3 mx-auto"></div></div></div>}>
-          <About language={currentLanguage.code} />
-        </Suspense>
+        {!isRetreatPage && (
+          <Suspense fallback={<div className="py-20 bg-gradient-to-b from-rose-50 via-white to-sky-50"><div className="container mx-auto px-4 text-center"><div className="animate-pulse h-8 bg-gray-300 rounded w-1/3 mx-auto"></div></div></div>}>
+            <About language={currentLanguage.code} />
+          </Suspense>
+        )}
         <Suspense fallback={<div className="py-20 bg-gradient-to-b from-sky-50 via-white to-rose-50"><div className="container mx-auto px-4 text-center"><div className="animate-pulse h-8 bg-gray-300 rounded w-1/3 mx-auto"></div></div></div>}>
           <Contact language={currentLanguage.code} />
         </Suspense>

@@ -50,14 +50,15 @@ export const translations: Record<string, Translation> = {
       title: 'Pilates Retreat',
       subtitle: 'u Hrvatskoj',
       dates: '19. – 26.09.2026.',
-      description: 'Tjedan pokreta, opuštanja i novih prijateljstava u ekskluzivnoj vili s bazenom na obali Prokljanskog jezera. Pilates direktno uz more, outdoor treninzi na otvorenom i mala, osobna grupa.',
-      tagline: 'Pokret. Opuštanje. Ti.',
+      description: 'Poklonite si tjedan pun pokreta, opuštanja i nevjerojatnih pogleda na more.',
+      tagline: 'Pokret. Opuštanje. Ti. ♡',
+      cta: 'Prijavi se sada',
       highlights: {
         pilates: 'Pilates direktno uz more',
         outdoor: 'Outdoor treninzi na otvorenom',
         villa: 'Ekskluzivna vila s bazenom',
         group: 'Mala, osobna grupa',
-        relax: 'Vrijeme za opuštanje, sunce i nova prijateljstva'
+        relax: 'Vrijeme za opuštanje, uživanje u suncu i nova prijateljstva'
       }
     },
     about: {
@@ -147,14 +148,15 @@ export const translations: Record<string, Translation> = {
       title: 'Pilates Retreat',
       subtitle: 'in Croatia',
       dates: '19 – 26 Sep 2026',
-      description: 'A week of movement, relaxation and new friendships in an exclusive villa with a pool on the shore of Lake Prokljan. Pilates right by the sea, outdoor training under the open sky, and a small personal group.',
-      tagline: 'Movement. Relaxation. You.',
+      description: 'Treat yourself to a week full of movement, relaxation and dreamy views of the sea.',
+      tagline: 'Movement. Relaxation. You. ♡',
+      cta: 'Register now',
       highlights: {
         pilates: 'Pilates right by the sea',
-        outdoor: 'Outdoor training under the open sky',
+        outdoor: 'Outdoor workouts under the open sky',
         villa: 'Exclusive villa with pool',
         group: 'Small, personal group',
-        relax: 'Time to relax, enjoy the sun & make new friends'
+        relax: 'Time to relax, enjoy the sun and make new friends'
       }
     },
     about: {
@@ -244,14 +246,15 @@ export const translations: Record<string, Translation> = {
       title: 'Pilates-Retreat',
       subtitle: 'in Kroatien',
       dates: '19. – 26.09.2026',
-      description: 'Eine Woche voller Bewegung, Entspannung und neuer Freundschaften in einer exklusiven Villa mit Pool am Prokljan-See. Pilates direkt am Meer, Outdoor-Trainings unter freiem Himmel und eine kleine, persönliche Gruppe.',
-      tagline: 'Bewegung. Entspannung. Du.',
+      description: 'Gönnen Sie sich eine Woche voller Bewegung, Entspannung und traumhafter Ausblicke auf das Meer.',
+      tagline: 'Bewegung. Entspannung. Du. ♡',
+      cta: 'Jetzt anmelden',
       highlights: {
         pilates: 'Pilates direkt am Meer',
-        outdoor: 'Outdoor-Trainings unter freiem Himmel',
+        outdoor: 'Outdoor-Workouts unter freiem Himmel',
         villa: 'Exklusive Villa mit Pool',
         group: 'Kleine, persönliche Gruppe',
-        relax: 'Zeit zum Entspannen, Sonne genießen & neue Freundschaften'
+        relax: 'Zeit zum Entspannen, Sonne genießen und neue Freundschaften schließen'
       }
     },
     about: {

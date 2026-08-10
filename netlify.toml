@@ -6,6 +6,11 @@
   NODE_VERSION = "18"
 
 [[redirects]]
+  from = "/retreat"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200

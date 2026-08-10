@@ -19,17 +19,45 @@ export const Header: React.FC<HeaderProps> = ({
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
   const navItems = [
-    { key: 'nav.home', href: '#home' },
-    { key: 'nav.houses', href: '#houses' },
-    { key: 'nav.excursions', href: '#excursions' },
-    { key: 'nav.retreat', href: '#retreat' },
-    { key: 'nav.about', href: '#about' },
-    { key: 'nav.contact', href: '#contact' }
+    { key: 'nav.home', href: '/' },
+    { key: 'nav.houses', href: '/#houses' },
+    { key: 'nav.excursions', href: '/#excursions' },
+    { key: 'nav.retreat', href: '/retreat' },
+    { key: 'nav.about', href: '/#about' },
+    { key: 'nav.contact', href: '/#contact' }
   ];
 
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
-    // Scroll to section
+
+    if (href === '/retreat') {
+      if (window.location.pathname.replace(/\/$/, '') !== '/retreat') {
+        window.location.assign('/retreat');
+      } else {
+        document.getElementById('retreat')?.scrollIntoView({ behavior: 'smooth' });
+      }
+      return;
+    }
+
+    if (href === '/') {
+      if (window.location.pathname.replace(/\/$/, '') === '/retreat') {
+        window.location.assign('/');
+      } else {
+        document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' });
+      }
+      return;
+    }
+
+    if (href.startsWith('/#')) {
+      const id = href.slice(2);
+      if (window.location.pathname.replace(/\/$/, '') === '/retreat') {
+        window.location.assign(`/#${id}`);
+        return;
+      }
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -43,7 +71,7 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Logo */}
           <button
             type="button"
-            onClick={() => handleNavClick('#home')}
+            onClick={() => handleNavClick('/')}
             className="flex items-center group"
           >
             <img
