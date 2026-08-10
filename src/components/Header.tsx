@@ -22,7 +22,7 @@ export const Header: React.FC<HeaderProps> = ({
     { key: 'nav.home', href: '#home' },
     { key: 'nav.houses', href: '#houses' },
     { key: 'nav.excursions', href: '#excursions' },
-    { key: 'nav.lastminute', href: '#lastminute' },
+    { key: 'nav.retreat', href: '#retreat' },
     { key: 'nav.about', href: '#about' },
     { key: 'nav.contact', href: '#contact' }
   ];
@@ -41,19 +41,17 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
-            <div className="w-12 h-12 rounded-xl flex items-center justify-center transform-gpu hover:scale-110 transition-transform duration-300 shadow-lg overflow-hidden">
-              <img 
-                src="/2AC326DA-C6A2-4294-B304-129379B9F0AC.jpeg" 
-                alt="Reiseziel Hrvatska Logo"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div>
-              <h1 className="text-xl font-bold text-slate-700">Reiseziel</h1>
-              <p className="text-sm text-emerald-600">Kroatien</p>
-            </div>
-          </div>
+          <button
+            type="button"
+            onClick={() => handleNavClick('#home')}
+            className="flex items-center group"
+          >
+            <img
+              src="/logo.jpeg"
+              alt="Reiseziel Kroatien"
+              className="h-20 w-auto object-contain transform group-hover:scale-105 transition-transform duration-300"
+            />
+          </button>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
