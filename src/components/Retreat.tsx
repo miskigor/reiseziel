@@ -20,17 +20,21 @@ export const Retreat: React.FC<RetreatProps> = ({ language }) => {
   return (
     <section
       id="retreat"
-      className="py-20 bg-gradient-to-b from-sky-50 via-white to-slate-50 relative overflow-hidden scroll-mt-24"
+      className="pt-8 pb-20 bg-gradient-to-b from-sky-50 via-white to-slate-50 relative overflow-hidden scroll-mt-24"
     >
-      <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-10 overflow-hidden rounded-2xl shadow-2xl border border-slate-200/60 bg-white">
+      {/* Wide image */}
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 mb-12">
+        <div className="overflow-hidden rounded-xl md:rounded-2xl shadow-2xl">
           <img
             src="/pilates-retreat.jpg"
             alt={t('retreat.title')}
-            className="w-full h-auto object-cover"
+            className="w-full h-auto min-h-[280px] sm:min-h-[360px] md:min-h-[480px] object-cover object-center"
           />
         </div>
+      </div>
 
+      {/* Text below */}
+      <div className="relative z-10 max-w-2xl mx-auto px-4 sm:px-6">
         <p className="text-center text-2xl md:text-3xl italic font-medium text-slate-800 mb-4">
           {t('retreat.tagline')}
         </p>
