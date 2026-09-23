@@ -51,7 +51,7 @@ export const Retreat: React.FC<RetreatProps> = ({ language, focusTerm = null }) 
       <div className="relative z-10 w-full max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 mb-12">
         <div className="overflow-hidden rounded-xl md:rounded-2xl shadow-2xl">
           <img
-            src="/pilates-retreat.jpg"
+            src="/pilates-retreat.jpg?v=3"
             alt={t('retreat.title')}
             className="w-full h-auto min-h-[280px] sm:min-h-[360px] md:min-h-[480px] object-cover object-center"
           />
