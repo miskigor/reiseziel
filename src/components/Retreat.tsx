@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { CheckCircle } from './Icons';
 import { useTranslation } from '../hooks/useTranslation';
 import { retreatTerms, type RetreatTerm } from '../data/retreats';
 
 interface RetreatProps {
   language: string;
-  /** When set, show a single term page. When omitted on homepage, show all terms. */
-  term?: RetreatTerm;
-  /** Homepage mode: list all dates with links */
-  showAllTerms?: boolean;
+  /** Term to scroll into view when opening a dedicated link */
+  focusTerm?: RetreatTerm | null;
 }
 
-export const Retreat: React.FC<RetreatProps> = ({ language, term, showAllTerms = false }) => {
+const SITE = 'https://reiseziel-kroatien.de';
+
+export const Retreat: React.FC<RetreatProps> = ({ language, focusTerm = null }) => {
   const { t } = useTranslation(language);
   const lang = (language === 'hr' || language === 'en' || language === 'de' ? language : 'de') as
     | 'hr'
@@ -26,7 +26,22 @@ export const Retreat: React.FC<RetreatProps> = ({ language, term, showAllTerms =
     'retreat.highlights.relax',
   ];
 
-  const activeTerm = term ?? retreatTerms[0];
+  useEffect(() => {
+    if (!focusTerm) return;
+    const id = `retreat-${focusTerm.id}`;
+    let tries = 0;
+    const timer = window.setInterval(() => {
+      tries += 1;
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        window.clearInterval(timer);
+      } else if (tries > 40) {
+        window.clearInterval(timer);
+      }
+    }, 80);
+    return () => window.clearInterval(timer);
+  }, [focusTerm]);
 
   return (
     <section
@@ -48,58 +63,59 @@ export const Retreat: React.FC<RetreatProps> = ({ language, term, showAllTerms =
           {t('retreat.tagline')}
         </p>
 
-        <p className="text-lg text-slate-600 leading-relaxed text-center mb-10">
+        <p className="text-lg text-slate-600 leading-relaxed text-center mb-12">
           {t('retreat.description')}
         </p>
 
-        {showAllTerms ? (
-          <div className="space-y-4 mb-10">
-            <p className="text-center text-sm font-semibold uppercase tracking-wide text-slate-500 mb-2">
-              {t('retreat.availableDates')}
-            </p>
-            {retreatTerms.map((item) => (
-              <a
+        <div className="space-y-10">
+          {retreatTerms.map((item) => {
+            const shareUrl = `${SITE}${item.path}`;
+            const isFocused = focusTerm?.id === item.id;
+
+            return (
+              <article
                 key={item.id}
-                href={item.path}
-                className="block bg-white rounded-2xl shadow-lg border border-slate-100 p-5 md:p-6 hover:shadow-xl hover:border-sky-200 transition-all duration-300"
+                id={`retreat-${item.id}`}
+                className={`scroll-mt-28 bg-white rounded-2xl shadow-xl border p-6 md:p-8 ${
+                  isFocused ? 'border-sky-400 ring-2 ring-sky-200' : 'border-slate-100'
+                }`}
               >
-                <p className="text-sm text-sky-700 font-medium mb-1">{item.label[lang]}</p>
-                <p className="text-2xl md:text-3xl font-bold text-sky-800 tracking-wide">
+                <p className="text-center text-sm font-semibold uppercase tracking-wide text-sky-700 mb-2">
+                  {item.label[lang]}
+                </p>
+                <p className="text-center text-3xl md:text-4xl font-bold text-sky-800 mb-6 tracking-wide">
                   {item.dates[lang]}
                 </p>
-                <p className="mt-3 text-sm font-semibold text-slate-600">
-                  {t('retreat.openTerm')} →
-                </p>
-              </a>
-            ))}
-          </div>
-        ) : (
-          <div className="bg-white rounded-2xl shadow-xl border border-slate-100 p-6 md:p-8 mb-10">
-            <p className="text-center text-3xl md:text-4xl font-bold text-sky-800 mb-6 tracking-wide">
-              {activeTerm.dates[lang]}
-            </p>
 
-            <ul className="space-y-4">
-              {highlights.map((key) => (
-                <li key={key} className="flex items-start gap-3 text-slate-700">
-                  <CheckCircle className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-base md:text-lg leading-snug">{t(key)}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+                <ul className="space-y-4 mb-8">
+                  {highlights.map((key) => (
+                    <li key={key} className="flex items-start gap-3 text-slate-700">
+                      <CheckCircle className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-base md:text-lg leading-snug">{t(key)}</span>
+                    </li>
+                  ))}
+                </ul>
 
-        {!showAllTerms && (
-          <div className="text-center">
-            <a
-              href="#contact"
-              className="inline-block bg-slate-800 hover:bg-slate-900 text-white font-bold py-4 px-10 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-            >
-              {t('retreat.cta')}
-            </a>
-          </div>
-        )}
+                <div className="text-center mb-6">
+                  <a
+                    href="#contact"
+                    className="inline-block bg-slate-800 hover:bg-slate-900 text-white font-bold py-3.5 px-9 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                  >
+                    {t('retreat.cta')}
+                  </a>
+                </div>
+
+                <p className="text-center text-xs text-slate-400 mb-1">{t('retreat.shareLink')}</p>
+                <a
+                  href={item.path}
+                  className="block text-center text-sm font-medium text-sky-700 break-all hover:underline"
+                >
+                  {shareUrl}
+                </a>
+              </article>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

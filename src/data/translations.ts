@@ -55,6 +55,7 @@ export const translations: Record<string, Translation> = {
       cta: 'Prijavi se sada',
       availableDates: 'Dostupni termini',
       openTerm: 'Otvori termin',
+      shareLink: 'Direktni link:',
       highlights: {
         pilates: 'Pilates direktno uz more',
         outdoor: 'Outdoor treninzi na otvorenom',
@@ -155,6 +156,7 @@ export const translations: Record<string, Translation> = {
       cta: 'Register now',
       availableDates: 'Available dates',
       openTerm: 'Open date',
+      shareLink: 'Direct link:',
       highlights: {
         pilates: 'Pilates right by the sea',
         outdoor: 'Outdoor workouts under the open sky',
@@ -255,6 +257,7 @@ export const translations: Record<string, Translation> = {
       cta: 'Jetzt anmelden',
       availableDates: 'Verfügbare Termine',
       openTerm: 'Termin öffnen',
+      shareLink: 'Direkter Link:',
       highlights: {
         pilates: 'Pilates direkt am Meer',
         outdoor: 'Outdoor-Workouts unter freiem Himmel',

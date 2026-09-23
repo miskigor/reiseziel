@@ -12,13 +12,6 @@ const Retreat = lazy(() => import('./components/Retreat').then(m => ({ default: 
 const About = lazy(() => import('./components/About').then(m => ({ default: m.About })));
 const Contact = lazy(() => import('./components/Contact').then(m => ({ default: m.Contact })));
 
-function scrollToRetreat() {
-  const el = document.getElementById('retreat');
-  if (!el) return false;
-  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  return true;
-}
-
 function getPath() {
   return window.location.pathname.replace(/\/$/, '') || '/';
 }
@@ -29,27 +22,27 @@ function App() {
     if (typeof window === 'undefined') return null;
     return getRetreatByPath(getPath());
   });
-  const [wantsHashRetreat, setWantsHashRetreat] = React.useState(() => {
-    if (typeof window === 'undefined') return false;
-    return window.location.hash === '#retreat';
-  });
 
   const isRetreatPage = !!activeRetreat;
-  const showHomepageRetreatList = !isRetreatPage;
 
   useEffect(() => {
     const path = getPath();
     const term = getRetreatByPath(path);
     const hashRetreat = window.location.hash === '#retreat';
     setActiveRetreat(term);
-    setWantsHashRetreat(hashRetreat);
 
     if (!term && !hashRetreat) return;
 
+    // Scroll to section (or specific term handled inside Retreat via focusTerm)
     let tries = 0;
     const timer = window.setInterval(() => {
       tries += 1;
-      if (scrollToRetreat() || tries > 50) {
+      const targetId = term ? `retreat-${term.id}` : 'retreat';
+      const el = document.getElementById(targetId) || document.getElementById('retreat');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        window.clearInterval(timer);
+      } else if (tries > 50) {
         window.clearInterval(timer);
       }
     }, 100);
@@ -146,8 +139,7 @@ function App() {
           <div className={isRetreatPage ? 'pt-24' : undefined}>
             <Retreat
               language={currentLanguage.code}
-              term={activeRetreat ?? undefined}
-              showAllTerms={showHomepageRetreatList || wantsHashRetreat}
+              focusTerm={activeRetreat}
             />
           </div>
         </Suspense>
