@@ -53,6 +53,8 @@ export const translations: Record<string, Translation> = {
       description: 'Poklonite si tjedan pun pokreta, opuštanja i nevjerojatnih pogleda na more.',
       tagline: 'Pokret. Opuštanje. Ti. ♡',
       cta: 'Prijavi se sada',
+      availableDates: 'Dostupni termini',
+      openTerm: 'Otvori termin',
       highlights: {
         pilates: 'Pilates direktno uz more',
         outdoor: 'Outdoor treninzi na otvorenom',
@@ -151,6 +153,8 @@ export const translations: Record<string, Translation> = {
       description: 'Treat yourself to a week full of movement, relaxation and dreamy views of the sea.',
       tagline: 'Movement. Relaxation. You. ♡',
       cta: 'Register now',
+      availableDates: 'Available dates',
+      openTerm: 'Open date',
       highlights: {
         pilates: 'Pilates right by the sea',
         outdoor: 'Outdoor workouts under the open sky',
@@ -249,6 +253,8 @@ export const translations: Record<string, Translation> = {
       description: 'Gönnen Sie sich eine Woche voller Bewegung, Entspannung und traumhafter Ausblicke auf das Meer.',
       tagline: 'Bewegung. Entspannung. Du. ♡',
       cta: 'Jetzt anmelden',
+      availableDates: 'Verfügbare Termine',
+      openTerm: 'Termin öffnen',
       highlights: {
         pilates: 'Pilates direkt am Meer',
         outdoor: 'Outdoor-Workouts unter freiem Himmel',

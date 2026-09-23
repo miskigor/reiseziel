@@ -29,9 +29,13 @@ export const Header: React.FC<HeaderProps> = ({
 
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
+    const path = window.location.pathname.replace(/\/$/, '') || '/';
+    const onRetreatPage = path === '/retreat' || path.startsWith('/retreat/');
 
     if (href === '/retreat') {
-      if (window.location.pathname.replace(/\/$/, '') !== '/retreat') {
+      if (!onRetreatPage) {
+        window.location.assign('/retreat');
+      } else if (path !== '/retreat') {
         window.location.assign('/retreat');
       } else {
         document.getElementById('retreat')?.scrollIntoView({ behavior: 'smooth' });
@@ -40,7 +44,7 @@ export const Header: React.FC<HeaderProps> = ({
     }
 
     if (href === '/') {
-      if (window.location.pathname.replace(/\/$/, '') === '/retreat') {
+      if (onRetreatPage) {
         window.location.assign('/');
       } else {
         document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' });
@@ -50,7 +54,7 @@ export const Header: React.FC<HeaderProps> = ({
 
     if (href.startsWith('/#')) {
       const id = href.slice(2);
-      if (window.location.pathname.replace(/\/$/, '') === '/retreat') {
+      if (onRetreatPage) {
         window.location.assign(`/#${id}`);
         return;
       }
